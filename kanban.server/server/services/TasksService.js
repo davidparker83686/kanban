@@ -3,12 +3,12 @@ import { BadRequest } from '../utils/Errors'
 
 class TasksService {
   async getAllTasks(query = {}) {
-    const tasks = await dbContext.Tasks.find(query)
+    const tasks = await dbContext.Task.find(query)
     return tasks
   }
 
   async getOneTask(id) {
-    const task = await dbContext.Tasks.findOne(id)
+    const task = await dbContext.Task.findOne(id)
     if (!task) {
       throw new BadRequest('Invalid Id')
     }
@@ -16,7 +16,7 @@ class TasksService {
   }
 
   async deleteTask(id) {
-    const data = await dbContext.Tasks.findByIdAndDelete(id)
+    const data = await dbContext.Task.findByIdAndDelete(id)
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -25,7 +25,7 @@ class TasksService {
 
   async editTask(body) {
     // what does this param say?
-    const data = await dbContext.Tasks.findOneAndUpdate({ _id: body.id }, body, { new: true })
+    const data = await dbContext.Task.findOneAndUpdate({ _id: body.id }, body, { new: true })
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -33,7 +33,7 @@ class TasksService {
   }
 
   async createTask(body) {
-    return await dbContext.Tasks.create(body)
+    return await dbContext.Task.create(body)
   }
 }
 

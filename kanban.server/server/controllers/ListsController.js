@@ -1,31 +1,32 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { listsService } from '../services/ListsServices'
+import { tasksService } from '../services/TasksServices'
 
 export class ListsController extends BaseController {
   constructor() {
     super('api/lists')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAllLists)
-      .get('/:id', this.getOneList)
       .delete('/:id', this.deleteList)
       .put('/:id', this.editList)
       .post('', this.createList)
+      .get('/:id/tasks', this.getAllTasks)
+      .get('/:id/tasks/:id', this.getOneTask)
   }
 
-  async getAllLists(req, res, next) {
+  async getAllTasks(req, res, next) {
     try {
-      const data = await listsService.find(req.query)
+      const data = await tasksService.find(req.query)
       return res.send(data)
     } catch (error) {
       next(error)
     }
   }
 
-  async getOneList(req, res, next) {
+  async getOneTask(req, res, next) {
     try {
-      const data = await listsService.getOneList(req.query)
+      const data = await tasksService.getOneTask(req.query)
       // data  is returning what is given back from teh service
       return res.send(data)
     } catch (error) {

@@ -3,12 +3,12 @@ import { BadRequest } from '../utils/Errors'
 
 class CommentsService {
   async getAllComments(query = {}) {
-    const comments = await dbContext.Comments.find(query)
+    const comments = await dbContext.Comment.find(query)
     return comments
   }
 
   async getOneComment(id) {
-    const comment = await dbContext.Comments.findOne(id)
+    const comment = await dbContext.Comment.findOne(id)
     if (!comment) {
       throw new BadRequest('Invalid Id')
     }
@@ -16,7 +16,7 @@ class CommentsService {
   }
 
   async deleteComment(id) {
-    const data = await dbContext.Comments.findByIdAndDelete(id)
+    const data = await dbContext.Comment.findByIdAndDelete(id)
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -25,7 +25,7 @@ class CommentsService {
 
   async editComment(body) {
     // what does this param say?
-    const data = await dbContext.Comments.findOneAndUpdate({ _id: body.id }, body, { new: true })
+    const data = await dbContext.Comment.findOneAndUpdate({ _id: body.id }, body, { new: true })
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -33,7 +33,7 @@ class CommentsService {
   }
 
   async createComment(body) {
-    return await dbContext.Comments.create(body)
+    return await dbContext.Comment.create(body)
   }
 }
 

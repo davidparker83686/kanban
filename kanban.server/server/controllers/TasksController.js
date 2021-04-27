@@ -1,31 +1,33 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { tasksService } from '../services/TasksServices'
+import { commentsService } from '../services/CommentsServices'
 
 export class TasksController extends BaseController {
   constructor() {
     super('api/tasks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAllTasks)
-      .get('/:id', this.getOneTask)
+
       .delete('/:id', this.deleteTask)
       .put('/:id', this.editTask)
       .post('', this.createTask)
+      .get('/:id/comments', this.getAllComments)
+      .get('/:id/comments/:id', this.getOneComment)
   }
 
-  async getAllTasks(req, res, next) {
+  async getAllComments(req, res, next) {
     try {
-      const data = await tasksService.find(req.query)
+      const data = await commentsService.find(req.query)
       return res.send(data)
     } catch (error) {
       next(error)
     }
   }
 
-  async getOneTask(req, res, next) {
+  async getOneComment(req, res, next) {
     try {
-      const data = await tasksService.getOneTask(req.query)
+      const data = await commentsService.getOneComment(req.query)
       // data  is returning what is given back from teh service
       return res.send(data)
     } catch (error) {

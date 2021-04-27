@@ -1,6 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { boardsService } from '../services/BoardsServices'
+import { listsService } from '../services/ListsServices'
 
 export class BoardsController extends BaseController {
   constructor() {
@@ -12,6 +13,8 @@ export class BoardsController extends BaseController {
       .delete('/:id', this.deleteBoard)
       .put('/:id', this.editBoard)
       .post('', this.createBoard)
+      .get('/:id/lists', this.getAllLists)
+      .get('/:id/lists/:id', this.getOneList)
   }
 
   async getAllBoards(req, res, next) {
@@ -58,6 +61,25 @@ export class BoardsController extends BaseController {
       req.body.creatorId = req.userInfo.id
       const data = await boardsService.createBoard(req.body)
       res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getAllLists(req, res, next) {
+    try {
+      const data = await listsService.find(req.query)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getOneList(req, res, next) {
+    try {
+      const data = await listsService.getOneList(req.query)
+      // data  is returning what is given back from teh service
+      return res.send(data)
     } catch (error) {
       next(error)
     }
