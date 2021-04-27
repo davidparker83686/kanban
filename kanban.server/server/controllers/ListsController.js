@@ -26,7 +26,7 @@ export class ListsController extends BaseController {
 
   async getOneTask(req, res, next) {
     try {
-      const data = await tasksService.getOneTask(req.query)
+      const data = await tasksService.getOneTask(req.params.id)
       // data  is returning what is given back from teh service
       return res.send(data)
     } catch (error) {

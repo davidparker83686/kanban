@@ -8,7 +8,7 @@ class BoardsService {
   }
 
   async getOneBoard(id) {
-    const board = await dbContext.Board.findOne(id)
+    const board = await dbContext.Board.findOne({ _id: id })
     if (!board) {
       throw new BadRequest('Invalid Id')
     }

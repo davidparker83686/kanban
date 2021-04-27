@@ -27,7 +27,7 @@ export class TasksController extends BaseController {
 
   async getOneComment(req, res, next) {
     try {
-      const data = await commentsService.getOneComment(req.query)
+      const data = await commentsService.getOneComment(req.params.id)
       // data  is returning what is given back from teh service
       return res.send(data)
     } catch (error) {

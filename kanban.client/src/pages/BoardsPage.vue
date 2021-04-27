@@ -1,57 +1,44 @@
 <template>
-  <div class="col-12">
-    <div class="row">
-      <div class="boardsPage col-12 d-flex bg-danger justify-content-around mt-5">
+  <div class="container-fluid">
+    <div class="row justify-content-around">
+      <div class="boardsPage d-flex col-12 justify-content-between mx-3 mt-3">
         <h1>USER</h1>
-        <button type="button" class="btn btn-primary new-board-button">
-          Primary
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#board">
+          New Board
         </button>
       </div>
     </div>
+    <boardCreationModal />
     <div class="row">
       <!-- CARDS GO HERE -->
-      <div class="col-2 mx-3 bg-warning">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h3 class="card-title">
-              board.title
-            </h3>
-            <h5>board.creatorid</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <!-- CARDS GO HERE -->
-      <div class="col-2 mx-3 bg-warning">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h3 class="card-title">
-              board.title
-            </h3>
-            <h5>board.creatorid</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <!-- CARDS GO HERE -->
-      <div class="col-2 mx-3 bg-warning">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h3 class="card-title">
-              board.title
-            </h3>
-            <h5>board.creatorid</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
+      <board v-for="board in state.boards" :key="board.id" :board="board" />
     </div>
   </div>
 </template>
 
 <script>
+import { onMounted, computed, reactive } from 'vue'
+import { boardsService } from '../services/BoardsService'
+import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+
 export default {
-  name: 'Boards'
+  name: 'Boards',
+  setup() {
+    const state = reactive({
+      boards: computed(() => AppState.boards)
+    })
+    onMounted(async() => {
+      try {
+        await boardsService.getAllBoards()
+      } catch (error) {
+        logger.error(error)
+      }
+    })
+    return {
+      state
+    }
+  }
 }
 </script>
 

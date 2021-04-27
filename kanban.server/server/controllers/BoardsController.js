@@ -28,7 +28,7 @@ export class BoardsController extends BaseController {
 
   async getOneBoard(req, res, next) {
     try {
-      const data = await boardsService.getOneBoard(req.query)
+      const data = await boardsService.getOneBoard(req.params.id)
       // data  is returning what is given back from teh service
       return res.send(data)
     } catch (error) {

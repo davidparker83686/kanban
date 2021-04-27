@@ -8,7 +8,7 @@ class ListsService {
   }
 
   async getOneList(id) {
-    const list = await dbContext.List.findOne(id)
+    const list = await dbContext.List.findOne({ _id: id })
     if (!list) {
       throw new BadRequest('Invalid Id')
     }

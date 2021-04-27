@@ -14,7 +14,14 @@ const routes = [
   {
     path: '/boards',
     name: 'Boards',
-    component: loadPage('BoardsPage')
+    component: loadPage('BoardsPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/boardsDetails/:id',
+    name: 'BoardsDetails',
+    component: loadPage('BoardsDetailsPage'),
+    beforeEnter: authGuard
   },
   {
     path: '/about',

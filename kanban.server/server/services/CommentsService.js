@@ -8,7 +8,7 @@ class CommentsService {
   }
 
   async getOneComment(id) {
-    const comment = await dbContext.Comment.findOne(id)
+    const comment = await dbContext.Comment.findOne({ _id: id })
     if (!comment) {
       throw new BadRequest('Invalid Id')
     }
