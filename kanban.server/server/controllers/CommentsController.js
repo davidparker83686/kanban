@@ -1,6 +1,6 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { commentsService } from '../services/CommentsServices'
+import { commentsService } from '../services/CommentsService'
 
 export class CommentsController extends BaseController {
   constructor() {

@@ -1,7 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { tasksService } from '../services/TasksServices'
-import { commentsService } from '../services/CommentsServices'
+import { tasksService } from '../services/TasksService'
+import { commentsService } from '../services/CommentsService'
 
 export class TasksController extends BaseController {
   constructor() {
