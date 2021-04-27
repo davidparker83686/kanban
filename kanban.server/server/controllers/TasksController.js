@@ -18,7 +18,7 @@ export class TasksController extends BaseController {
 
   async getAllComments(req, res, next) {
     try {
-      const data = await commentsService.find(req.query)
+      const data = await commentsService.getAllComments(req.query)
       return res.send(data)
     } catch (error) {
       next(error)
@@ -46,7 +46,7 @@ export class TasksController extends BaseController {
 
   async editTask(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
+      req.body.id = req.params.id
       const data = await tasksService.editTask(req.body)
       return res.send(data)
     } catch (error) {

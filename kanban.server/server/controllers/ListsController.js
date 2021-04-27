@@ -17,7 +17,7 @@ export class ListsController extends BaseController {
 
   async getAllTasks(req, res, next) {
     try {
-      const data = await tasksService.find(req.query)
+      const data = await tasksService.getAllTasks(req.query)
       return res.send(data)
     } catch (error) {
       next(error)
@@ -45,7 +45,7 @@ export class ListsController extends BaseController {
 
   async editList(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
+      req.body.id = req.params.id
       const data = await listsService.editList(req.body)
       return res.send(data)
     } catch (error) {
