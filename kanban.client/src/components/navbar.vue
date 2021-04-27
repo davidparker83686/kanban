@@ -1,12 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg bg-info text-mutec">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
-        />
+        <span><b>KANBAN</b></span>
       </div>
     </router-link>
     <button
@@ -22,14 +18,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link">
             Home
           </router-link>
-        </li>
+        </li> -->
+        <span></span>
         <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
+          <router-link :to="{ name: 'Boards' }" class="nav-link">
+            <span><b>Boards</b></span>
           </router-link>
         </li>
       </ul>
@@ -51,9 +48,9 @@
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="rounded-circle"
             />
-            <span class="mx-3">{{ user.name }}</span>
+            <span class="mx-3 small">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
