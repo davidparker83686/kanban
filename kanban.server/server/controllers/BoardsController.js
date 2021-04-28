@@ -2,6 +2,7 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { boardsService } from '../services/BoardsService'
 import { listsService } from '../services/ListsService'
+import { logger } from '../utils/Logger'
 
 export class BoardsController extends BaseController {
   constructor() {
@@ -19,7 +20,7 @@ export class BoardsController extends BaseController {
 
   async getAllBoards(req, res, next) {
     try {
-      const data = await boardsService.getAllBoards(req.query)
+      const data = await boardsService.getAllBoards(req.params.id)
       return res.send(data)
     } catch (error) {
       next(error)
@@ -68,7 +69,9 @@ export class BoardsController extends BaseController {
 
   async getAllLists(req, res, next) {
     try {
+      logger.log(req)
       const data = await listsService.getAllLists(req.query)
+      logger.log(data)
       return res.send(data)
     } catch (error) {
       next(error)

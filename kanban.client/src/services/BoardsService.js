@@ -18,6 +18,8 @@ class BoardsService {
   async createBoard(board) {
     const res = await api.post('api/boards', board)
     console.log(res.data)
+    // better way because we donthave to make another call to the back end and will do it localy
+    AppState.boards.push(res.data)
   }
 
   async editBoard() {

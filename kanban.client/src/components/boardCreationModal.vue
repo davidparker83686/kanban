@@ -56,9 +56,10 @@ export default {
     return {
       state,
       async createBoard() {
+        $('#board').modal('toggle')
+        $('.modal-backdrop.show').hide()
         await boardsService.createBoard(state.newBoard)
         state.newBoard = {}
-        $('#newBoard').modal('hide')
       }
     }
   }

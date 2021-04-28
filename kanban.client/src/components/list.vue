@@ -1,0 +1,82 @@
+<template>
+  <div class="col-3 d-flex px-2 justify-content-center my-2">
+    <div class="card shadow " style="width: 18rem;cursor: pointer">
+      <div class="card-body">
+        <div class="d-flex justify-content-end">
+          <button class="btn text-danger" @click="deleteList(list.id)">
+            X
+          </button>
+        </div>
+        <!-- router link -->
+        <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
+        <div class="d-flex justify-content-center">
+          <h3 class="card-title list">
+            {{ (list.title ).toUpperCase() }}
+          </h3>
+          <h5>{{ list.creatorid }}</h5>
+        </div>
+        <!-- </router-link> -->
+      </div>
+      <div>
+        <task v-for="task in state.tasks" :key="task.id" :task="task" />
+        <button type="button" class="btn btn-primary">
+          Add A Task
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { computed, reactive } from 'vue'
+import { AppState } from '../AppState'
+import { listsService } from '../services/ListsService'
+// import { tasksService } from '../services/TasksService'
+// import { listsService } from '../services/ListsService'
+import { logger } from '../utils/Logger'
+
+export default {
+  name: 'List',
+  props: {
+    list: {
+      type: Object,
+      required: true
+    }
+  },
+  setup() {
+    const state = reactive({
+      lists: computed(() => AppState.lists)
+    })
+    // to have all tasks render on list
+    // onMounted(async() => {
+    //   try {
+    //     await tasksService.getAllTasks()
+    //   } catch (error) {
+    //     logger.error(error)
+    //   }
+    // })
+    return {
+      state,
+      async getOneList(id) {
+        try {
+          // await listsService.getOneList(id)
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async deleteList(id) {
+        try {
+          await listsService.deleteList(id)
+        } catch (error) {
+          logger.error(error)
+        }
+      }
+    }
+  }
+}
+</script>
+<style scoped>
+.list {
+  color: black !important;
+  text-decoration: none!important;
+}
+</style>

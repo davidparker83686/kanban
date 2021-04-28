@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-around">
-      <div class="listsPage d-flex col-12 justify-content-between mx-3 mt-3" v-if="state.board">
-        <h1>{{ state.board.title }}</h1>
+      <div class="listsPage d-flex col-12 justify-content-between mx-5 mt-3" v-if="state.board">
+        <h1>{{ (state.board.title).toUpperCase() }}</h1>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#list">
           New List
         </button>
@@ -44,7 +44,7 @@ export default {
     onMounted(async() => {
       try {
         await boardsService.getOneBoard(route.params.id)
-        await listsService.getAllLists()
+        await listsService.getAllLists(route.params.id)
       } catch (error) {
         logger.error(error)
       }

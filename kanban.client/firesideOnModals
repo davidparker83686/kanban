@@ -1,0 +1,40 @@
+on the button the data-target must match the id on the modal
+
+you can just throw data-toggle and data-target on a card to have it on click pulll up a modal that will display detials. 
+
+
+you must <displayModalComponenet/> in your template
+
+import DisplayModalComponent from './DisplayModalComponent'
+
+our modal is called DisplayModalComponent.vue
+
+
+:data-target="'#modal data-toggle'+propName.id" on the button and 
+
+u can use row and col for a modal 
+
+class="image fluid" IN THE IMAGE TAG will keep the image within the aloted space like in the card or col.
+
+
+
+must be camel case on the modal compent and kabob on the item compent
+
+the PARENT has the # the CHILD doesnt. for modals
+
+slots are a wway we can use a modal for mulitple uses.
+so for example on your title 
+slots are an element tag 
+<slots ></slots>
+
+with slots you cant use self closing like <displaymodal/> you use 
+<displayModalComponenet>
+<template #title>
+<h5>{{car.make}}</h5>
+</template>
+</displayModalComponenet>
+
+
+to use slots for 
+imput field
+variable service.create()

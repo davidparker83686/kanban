@@ -1,18 +1,18 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-around">
-      <div class="boardsPage d-flex col-12 justify-content-between mx-3 mt-3">
+      <div class="boardsPage d-flex col-12 justify-content-between mx-5 mt-3">
         <h1>USER</h1>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#board">
+        <button type="button" class="btn btn-" data-toggle="modal" data-target="#board">
           New Board
         </button>
       </div>
     </div>
-    <boardCreationModal />
     <div class="row">
       <!-- CARDS GO HERE -->
       <board v-for="board in state.boards" :key="board.id" :board="board" />
     </div>
+    <boardCreationModal />
   </div>
 </template>
 
@@ -42,10 +42,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // .home{
 // }
-.new-board-button{
-  max-height: 50px;
+
+.btn-color{
+  background-color: aqua;
 }
+// .new-board-button{
+//   max-height: 50px;
+// }
 </style>
