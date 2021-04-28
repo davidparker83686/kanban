@@ -57,8 +57,8 @@ export default {
       state,
       async createComment() {
         await commentsService.createComment(state.newComment)
-        state.newComment = {}
-        $('#newComment').modal('hide')
+        $('#comment').modal('toggle')
+        $('.modal-backdrop.show').hide()
       }
     }
   }

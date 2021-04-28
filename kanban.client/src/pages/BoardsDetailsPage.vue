@@ -26,6 +26,7 @@ import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { boardsService } from '../services/BoardsService'
 import { useRoute } from 'vue-router'
+// import { tasksService } from "../services/TasksService"
 
 export default {
   name: 'BoardsDetails',
@@ -45,6 +46,7 @@ export default {
       try {
         await boardsService.getOneBoard(route.params.id)
         await listsService.getAllLists(route.params.id)
+        // await tasksService.getAllTasks(route.params.id)
       } catch (error) {
         logger.error(error)
       }

@@ -19,20 +19,22 @@
       </div>
       <div>
         <task v-for="task in state.tasks" :key="task.id" :task="task" />
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#task' + list.id">
           Add A Task
         </button>
       </div>
     </div>
+    <taskCreationModal :list-id="list.id" />
   </div>
 </template>
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
 // import { tasksService } from '../services/TasksService'
 // import { listsService } from '../services/ListsService'
 import { logger } from '../utils/Logger'
+import { tasksService } from '../services/TasksService'
 
 export default {
   name: 'List',
@@ -42,18 +44,21 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
+      tasks: computed(() => AppState.tasks[props.list.id]),
       lists: computed(() => AppState.lists)
     })
-    // to have all tasks render on list
-    // onMounted(async() => {
-    //   try {
-    //     await tasksService.getAllTasks()
-    //   } catch (error) {
-    //     logger.error(error)
-    //   }
-    // })
+    onMounted(async() => {
+      try {
+        // ??? how to have task know wat list when doing list we used route.params.id however were not leaving a page so we couldnt use route.params.id to give it the list id???
+        await tasksService.getAllTasks(props.list.id)
+      } catch (error) {
+
+      }
+    }
+
+    )
     return {
       state,
       async getOneList(id) {

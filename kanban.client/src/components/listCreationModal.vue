@@ -46,19 +46,24 @@
 import { reactive } from 'vue'
 import { listsService } from '../services/ListsService'
 import $ from 'jquery'
+// import { logger } from '../utils/Logger'
+import { useRoute } from 'vue-router'
 
 export default {
   Name: 'ListModal',
   setup() {
+    const route = useRoute()
     const state = reactive({
       newList: {}
     })
     return {
       state,
       async createList() {
+        state.newList.boardId = route.params.id
         await listsService.createList(state.newList)
         state.newList = {}
-        $('#newList').modal('hide')
+        $('#list').modal('toggle')
+        $('.modal-backdrop.show').hide()
       }
     }
   }

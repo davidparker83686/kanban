@@ -3,7 +3,7 @@
     <div class="row justify-content-around">
       <div class="boardsPage d-flex col-12 justify-content-between mx-5 mt-3">
         <h1>USER</h1>
-        <button type="button" class="btn btn-" data-toggle="modal" data-target="#board">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#board">
           New Board
         </button>
       </div>

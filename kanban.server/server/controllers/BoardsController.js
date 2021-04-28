@@ -70,7 +70,7 @@ export class BoardsController extends BaseController {
   async getAllLists(req, res, next) {
     try {
       logger.log(req)
-      const data = await listsService.getAllLists(req.query)
+      const data = await listsService.getAllLists(req.params.id)
       logger.log(data)
       return res.send(data)
     } catch (error) {

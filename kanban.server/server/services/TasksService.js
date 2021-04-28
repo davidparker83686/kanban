@@ -2,8 +2,8 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class TasksService {
-  async getAllTasks(query = {}) {
-    const tasks = await dbContext.Task.find(query)
+  async getAllTasks(id) {
+    const tasks = await dbContext.Task.find({ listId: id })
     return tasks
   }
 

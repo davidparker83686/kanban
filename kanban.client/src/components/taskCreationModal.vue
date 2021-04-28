@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="modal fade"
-         id="task"
+         :id="'task' + listId"
          tabindex="-1"
          role="dialog"
          aria-labelledby="exampleModalLabel"
@@ -49,16 +49,24 @@ import $ from 'jquery'
 
 export default {
   Name: 'TaskModal',
-  setup() {
+  props: {
+    listId: {
+      type: String,
+      required: true
+    }
+  },
+  setup(props) {
     const state = reactive({
       newTask: {}
     })
     return {
       state,
       async createTask() {
+        state.newTask.listId = props.listId
         await tasksService.createTask(state.newTask)
         state.newTask = {}
-        $('#newTask').modal('hide')
+        $('#task').modal('toggle')
+        $('.modal-backdrop.show').hide()
       }
     }
   }

@@ -14,8 +14,10 @@ class ListsService {
   }
 
   async createList(list) {
-    await api.post('api/lists', list)
-    this.getAllLists()
+    const res = await api.post('api/lists', list)
+    console.log(res.data)
+    // better way because we donthave to make another call to the back end and will do it localy
+    AppState.lists.push(res.data)
   }
 
   async editList(id, body) {
