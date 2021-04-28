@@ -10,6 +10,6 @@ export const AppState = reactive({
   activeList: null,
   tasks: {},
   activeTask: null,
-  comments: [],
+  comments: {},
   activeComment: null
 })

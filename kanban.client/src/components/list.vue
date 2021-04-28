@@ -10,7 +10,7 @@
         <!-- router link -->
         <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
         <div class="d-flex justify-content-center">
-          <h3 class="card-title list">
+          <h3 class="card-title list word-wrap">
             {{ (list.title ).toUpperCase() }}
           </h3>
           <h5>{{ list.creatorid }}</h5>
@@ -19,7 +19,7 @@
       </div>
       <div>
         <task v-for="task in state.tasks" :key="task.id" :task="task" />
-        <button type="button" class="btn btn-primary" data-toggle="modal" :data-target="'#task' + list.id">
+        <button type="button" @click="openModal" class="btn btn-primary" data-toggle="modal" :data-target="'#task' + list.id">
           Add A Task
         </button>
       </div>
@@ -35,7 +35,7 @@ import { listsService } from '../services/ListsService'
 // import { listsService } from '../services/ListsService'
 import { logger } from '../utils/Logger'
 import { tasksService } from '../services/TasksService'
-
+// import $ from 'jquery'
 export default {
   name: 'List',
   props: {
@@ -75,6 +75,10 @@ export default {
           logger.error(error)
         }
       }
+      // openModal() {
+      //   $(`#task${props.list.id}`).modal('show')
+      //   $('.modal-backdrop.show').show()
+      // }
     }
   }
 }
@@ -83,5 +87,8 @@ export default {
 .list {
   color: black !important;
   text-decoration: none!important;
+}
+.word-wrap{
+  word-wrap: break-word;
 }
 </style>

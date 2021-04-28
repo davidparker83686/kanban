@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="modal fade"
+    <div class="modal"
          id="board"
          tabindex="-1"
          role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
+         data-backdrop=""
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -56,8 +57,7 @@ export default {
     return {
       state,
       async createBoard() {
-        $('#board').modal('toggle')
-        $('.modal-backdrop.show').hide()
+        $('#board').modal('hide')
         await boardsService.createBoard(state.newBoard)
         state.newBoard = {}
       }

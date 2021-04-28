@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 d-flex px-2 justify-content-center my-2">
+  <div class="col-12 d-flex px-3 justify-content-center my-2">
     <div class="card shadow " style="width: 18rem;cursor: pointer">
       <div class="card-body">
         <div class="d-flex justify-content-end">
@@ -16,9 +16,12 @@
         </div>
         <!-- </router-link> -->
       </div>
-      <div>
+      <div style="
+    align-self: center;
+"
+      >
         <comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary m-1">
           Add A Comment
         </button>
       </div>

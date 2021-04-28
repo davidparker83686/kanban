@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="modal fade"
+    <div class="modal"
          :id="'task' + listId"
          tabindex="-1"
          role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
+         data-backdrop=""
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -65,8 +66,7 @@ export default {
         state.newTask.listId = props.listId
         await tasksService.createTask(state.newTask)
         state.newTask = {}
-        $('#task').modal('toggle')
-        $('.modal-backdrop.show').hide()
+        $(`#task${props.listId}`).modal('hide')
       }
     }
   }

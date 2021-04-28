@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="modal fade"
+    <div class="modal"
          id="list"
          tabindex="-1"
          role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
+         data-backdrop=""
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -62,8 +63,7 @@ export default {
         state.newList.boardId = route.params.id
         await listsService.createList(state.newList)
         state.newList = {}
-        $('#list').modal('toggle')
-        $('.modal-backdrop.show').hide()
+        $('#list').modal('hide')
       }
     }
   }

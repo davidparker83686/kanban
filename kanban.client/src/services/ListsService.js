@@ -27,7 +27,7 @@ class ListsService {
 
   async deleteList(id) {
     await api.delete(`api/lists/${id}`)
-    this.getAllLists()
+    AppState.lists = AppState.lists.filter(l => l.id !== id)
   }
 }
 

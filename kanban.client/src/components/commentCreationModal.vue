@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div class="modal fade"
-         id="comment"
+    <div class="modal"
+         :id="'comment' + listId"
          tabindex="-1"
          role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true"
+         data-backdrop=""
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -24,7 +25,7 @@
                      class="form-control"
                      id="name"
                      placeholder="name"
-                     v-model="state.newComment.body"
+                     v-model="state.newComment.title"
                      required
               >
               <button type="submit" class="btn btn-primary">
@@ -49,16 +50,23 @@ import $ from 'jquery'
 
 export default {
   Name: 'CommentModal',
-  setup() {
+  props: {
+    listId: {
+      type: String,
+      required: true
+    }
+  },
+  setup(props) {
     const state = reactive({
       newComment: {}
     })
     return {
       state,
       async createComment() {
+        state.newComment.taskId = props.taskId
         await commentsService.createComment(state.newComment)
-        $('#comment').modal('toggle')
-        $('.modal-backdrop.show').hide()
+        state.newComment = {}
+        $(`#comment${props.taskId}`).modal('toggle')
       }
     }
   }
