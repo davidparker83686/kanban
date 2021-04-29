@@ -6,7 +6,7 @@
     <router-view />
   </main>
   <footer>
-    <div class="bg-none  text-center p-4">
+    <div class="bg-none  text-center small">
       KANBAN/2021
     </div>
   </footer>

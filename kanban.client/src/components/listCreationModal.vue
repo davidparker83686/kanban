@@ -10,13 +10,10 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header d-flex justify-content-center">
             <h5 class="modal-title" id="exampleModalLabel">
-              New List
+              NEW LIST
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
           <div class="modal-body">
             <form class="form-group" @submit.prevent="createList">
@@ -24,19 +21,19 @@
               <input type="text"
                      class="form-control"
                      id="name"
-                     placeholder="name"
+                     placeholder="list..."
                      v-model="state.newList.title"
                      required
               >
-              <button type="submit" class="btn btn-primary">
-                Create
-              </button>
+              <div class="modal-footer d-flex justify-content-around">
+                <button type="submit" class="btn btn-primary">
+                  Create
+                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Close
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
           </div>
         </div>
       </div>

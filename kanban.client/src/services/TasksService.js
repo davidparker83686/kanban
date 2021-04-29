@@ -25,9 +25,17 @@ class TasksService {
     this.getAllTasks()
   }
 
-  async deleteTask(id) {
-    await api.delete(`api/tasks/${id}`)
-    this.getAllTasks()
+  async deleteTask(prop) {
+    await api.delete(`api/tasks/${prop.id}`)
+    this.getAllTasks(prop.listId)
+  }
+
+  async moveList(list, task) {
+    const old = task.listId
+    task.listId = list
+    const res = await api.put(`api/tasks/${task.id}`, task)
+    this.getAllTasks(res.data.listId)
+    this.getAllTasks(old)
   }
 }
 

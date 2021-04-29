@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-around">
-      <div class="boardsPage d-flex col-12 justify-content-between mx-5 mt-3">
+      <div class="boardsPage d-flex col-12 justify-content-between px-5 my-3">
         <h1>USER</h1>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#board">
           New Board
         </button>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-around">
       <!-- CARDS GO HERE -->
       <board v-for="board in state.boards" :key="board.id" :board="board" />
     </div>

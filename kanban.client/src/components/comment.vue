@@ -1,20 +1,22 @@
 <template>
-  <div class="col-3 d-flex px-2 justify-content-center my-2">
-    <div class="card shadow " style="width: 18rem;cursor: pointer">
-      <div class="card-body">
-        <div class="d-flex justify-content-end">
-          <button class="btn text-danger" @click="deleteComment(comment.id)">
-            X
-          </button>
-        </div>
-        <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
-        <div class="d-flex justify-content-center">
-          <h3 class="card-title comment">
-            {{ (comment.title).toUpperCase() }}
-          </h3>
-          <h5>{{ comment.creatorid }}</h5>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-10 d-flex px-2 justify-content-center my-2">
+      <div class="card shadow " style="width: 18rem;cursor: pointer">
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+            <button class="btn text-danger" @click="deleteComment()">
+              X
+            </button>
+          </div>
+          <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
+          <div class="d-flex justify-content-center">
+            <h3 class="card-title comment">
+              {{ (comment.body).toUpperCase() }}
+            </h3>
+            <h5>{{ comment.creatorid }}</h5>
+          </div>
         <!-- </router-link> -->
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +36,7 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const state = reactive({
       comments: computed(() => AppState.comments)
     })
@@ -47,9 +49,9 @@ export default {
           logger.error(error)
         }
       },
-      async deleteComment(id) {
+      async deleteComment() {
         try {
-          await commentsService.deleteComment(id)
+          await commentsService.deleteComment(props.comment)
         } catch (error) {
           logger.error(error)
         }

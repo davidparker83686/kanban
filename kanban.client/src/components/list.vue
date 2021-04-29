@@ -19,10 +19,10 @@
       </div>
       <div>
         <task v-for="task in state.tasks" :key="task.id" :task="task" />
-        <button type="button" @click="openModal" class="btn btn-primary" data-toggle="modal" :data-target="'#task' + list.id">
-          Add A Task
-        </button>
       </div>
+      <button type="button" @click="openModal" class="btn btn-primary mt-1 mb-2 mx-2" data-toggle="modal" :data-target="'#task' + list.id">
+        Add A Task
+      </button>
     </div>
     <taskCreationModal :list-id="list.id" />
   </div>
@@ -54,7 +54,6 @@ export default {
         // ??? how to have task know wat list when doing list we used route.params.id however were not leaving a page so we couldnt use route.params.id to give it the list id???
         await tasksService.getAllTasks(props.list.id)
       } catch (error) {
-
       }
     }
 

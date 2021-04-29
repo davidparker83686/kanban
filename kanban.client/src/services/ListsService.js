@@ -29,6 +29,11 @@ class ListsService {
     await api.delete(`api/lists/${id}`)
     AppState.lists = AppState.lists.filter(l => l.id !== id)
   }
+
+  // async changeList(board, list) {
+  //   const res = await api.get(`api/boards/${board}/lists`)
+  //   AppState.changeList = res.data.filter(l => l.id !== list)
+  // }
 }
 
 export const listsService = new ListsService()

@@ -13,12 +13,12 @@ export class TasksController extends BaseController {
       .put('/:id', this.editTask)
       .post('', this.createTask)
       .get('/:id/comments', this.getAllComments)
-      .get('/:id/comments/:id', this.getOneComment)
+      // .get('/:id/comments/:id', this.getOneComment)
   }
 
   async getAllComments(req, res, next) {
     try {
-      const data = await commentsService.getAllComments(req.query)
+      const data = await commentsService.getAllComments(req.params.id)
       return res.send(data)
     } catch (error) {
       next(error)

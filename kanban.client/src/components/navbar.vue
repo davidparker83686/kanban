@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-info text-mutec">
+  <nav class="navbar navbar-expand-lg bg-info rounded">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <span><b>KANBAN</b></span>
@@ -42,6 +42,7 @@
         <div class="dropdown" v-else>
           <div
             class="dropdown-toggle"
+            style="cursor: pointer"
             @click="state.dropOpen = !state.dropOpen"
           >
             <img
