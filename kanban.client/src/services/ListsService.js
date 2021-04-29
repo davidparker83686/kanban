@@ -1,6 +1,7 @@
 // import { AppState } from '../AppState'
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import Notification from '../utils/Notification'
 
 class ListsService {
   async getAllLists(id) {
@@ -18,6 +19,7 @@ class ListsService {
     console.log(res.data)
     // better way because we donthave to make another call to the back end and will do it localy
     AppState.lists.push(res.data)
+    Notification.toast('Successfully Created List', 'success')
   }
 
   async editList(id, body) {
@@ -28,6 +30,7 @@ class ListsService {
   async deleteList(id) {
     await api.delete(`api/lists/${id}`)
     AppState.lists = AppState.lists.filter(l => l.id !== id)
+    Notification.toast('Successfully Deleted List', 'success')
   }
 
   // async changeList(board, list) {

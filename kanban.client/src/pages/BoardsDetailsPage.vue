@@ -1,15 +1,15 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid super-light-green">
     <div class="row justify-content-around  ">
       <div class="listsPage d-flex col-12 justify-content-between my-3 px-5" v-if="state.board">
-        <h1>{{ (state.board.title).toUpperCase() }}</h1>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#list">
+        <h2>{{ (state.board.title).toUpperCase() }}</h2>
+        <button type="button" title="Create List" class="btn btn-info lightest-green-text" data-toggle="modal" data-target="#list">
           New List
         </button>
       </div>
     </div>
     <listCreationModal />
-    <div class="row justify-content-around side-scroll w-90 " v-if="state.lists">
+    <div class="row  side-scroll w-90 " v-if="state.lists">
       <!-- LISTS GO HERE -->
       <list v-for="list in state.lists" :key="list.id" :list="list" />
     </div>
@@ -64,9 +64,13 @@ export default {
 // .new-list-button{
 //   max-height: 50px;
 // }
+
+@media screen and (min-width:760px){
 .side-scroll{
     overflow-x: auto;
     // overflow-:auto;
-    flex-wrap: nowrap;  // display: inline-block;
+    flex-wrap: nowrap;
+    max-width: 100vw;// display: inline-block;
+}
 }
 </style>

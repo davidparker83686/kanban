@@ -1,6 +1,7 @@
 // import { AppState } from '../AppState'
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import Notification from '../utils/Notification'
 
 class CommentsService {
   async getAllComments(id) {
@@ -18,6 +19,7 @@ class CommentsService {
     // better way because we donthave to make another call to the back end and will do it localy
     console.log(AppState.comments)
     AppState.comments[comment.taskId].push(res.data)
+    Notification.toast('Successfully Created Comment', 'success')
   }
 
   async editComment(id, body) {
@@ -28,6 +30,7 @@ class CommentsService {
   async deleteComment(prop) {
     await api.delete(`api/comments/${prop.id}`)
     this.getAllComments(prop.taskId)
+    Notification.toast('Successfully Deleted Comment', 'success')
   }
 }
 

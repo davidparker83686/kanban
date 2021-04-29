@@ -1,7 +1,7 @@
 // import { AppState } from '../AppState'
 import { AppState } from '../AppState'
-import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
+import Notification from '../utils/Notification'
 
 class BoardsService {
   async getAllBoards() {
@@ -11,15 +11,14 @@ class BoardsService {
 
   async getOneBoard(id) {
     const res = await api.get(`api/boards/${id}`)
-    logger.log(res.data)
     AppState.activeBoard = res.data
   }
 
   async createBoard(board) {
     const res = await api.post('api/boards', board)
-    console.log(res.data)
     // better way because we donthave to make another call to the back end and will do it localy
     AppState.boards.push(res.data)
+    Notification.toast('Successfully Created Board', 'success')
   }
 
   async editBoard() {

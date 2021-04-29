@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid super-light-green">
     <div class="row justify-content-around">
       <div class="boardsPage d-flex col-12 justify-content-between px-5 my-3">
-        <h1>USER</h1>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#board">
+        <h2>{{ state.account.name.split('@')[0] }}'s boards</h2>
+        <button type="button" class="btn btn-info lightest-green-text" data-toggle="modal" title="Create Board" data-target="#board">
           New Board
         </button>
       </div>
@@ -26,15 +26,18 @@ export default {
   name: 'Boards',
   setup() {
     const state = reactive({
-      boards: computed(() => AppState.boards)
+      boards: computed(() => AppState.boards),
+      account: computed(() => AppState.account)
     })
     onMounted(async() => {
       try {
         await boardsService.getAllBoards()
+        logger.log(state.account)
       } catch (error) {
         logger.error(error)
       }
     })
+
     return {
       state
     }
@@ -42,14 +45,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// .home{
-// }
+<style lang="scss" >
 
-.btn-color{
-  background-color: aqua;
-}
-// .new-board-button{
-//   max-height: 50px;
-// }
 </style>

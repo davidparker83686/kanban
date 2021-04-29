@@ -1,6 +1,8 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <span><b>HOME PAGE</b></span>
+  <div class="container-fluid super-light-green">
+    <div class="home row  ">
+      <span class="dark-blue-text col-6 m-5 text-left">A Kanban board is a method for managing the creation of products with an emphasis on continual delivery while not overburdening the development team. Like Scrum, Kanban is a process designed to help teams work together more effectively. This application will provide users with a digital Kanban board, where they can manage several lists of tasks for each board.</span>
+    </div>
   </div>
 </template>
 

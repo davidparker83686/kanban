@@ -1,37 +1,50 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-11 d-flex px-3 justify-content-center my-2">
-      <div class="card shadow " style="width: 18rem; cursor: pointer">
+    <div class="col-11 d-flex px-3  my-2">
+      <div class="card dark-blue-text light-blue shadow " style="width: 18rem">
         <div class="card-body">
-          <div class="d-flex justify-content-end">
-            <button class="btn text-danger" @click="deleteTask()">
-              X
-            </button>
-          </div>
           <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
-          <div class="d-flex justify-content-center">
-            <h3 class="card-title task">
-              {{ (task.title).toUpperCase() }}
-            </h3>
+
+          <div class="row justify-content-between">
+            <div class="col-md-8">
+              <h3 class="card-title task">
+                {{ (task.title).toUpperCase() }}
+              </h3>
+            </div>
+
+            <div class="col-md-2">
+              <button class="btn text-danger" title="Delete Task" aria-label="Delete Task" @click="deleteTask()">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+
             <h5>{{ task.creatorid }}</h5>
           </div>
+
         <!-- </router-link> -->
         </div>
         <div>
           <comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
         </div>
-        <button type="button" class="btn btn-primary mt-1 mb-2 mx-2" @click="openModal" data-toggle="modal" :data-target="'#comment' + task.id">
+        <button type="button"
+                class="btn btn-outline-info mt-1 mb-2 mx-2"
+                title="Create Comment"
+                @click="openModal"
+                data-toggle="modal"
+                :data-target="'#comment' + task.id"
+        >
           Add A Comment
         </button>
-        <div class="dropdown d-flex justify-content-center mb-2">
-          <button class="btn btn-secondary dropdown-toggle"
+        <div class="dropdown  d-flex justify-content-center mb-2">
+          <button class="btn drop btn-outline-success dropdown-togglen w-100 mt-1 mb-2 mx-2"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  title="Move Task"
           >
-            Dropdown button
+            Move Task
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div class="dropdown-item" href="#" v-for="list in state.list" :key="list.id" @click="changeList(list.id)">
@@ -115,5 +128,8 @@ export default {
 .task {
   color: black !important;
   text-decoration: none!important;
+}
+.drop:hover{
+  color: white;
 }
 </style>

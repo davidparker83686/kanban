@@ -9,7 +9,7 @@
          data-backdrop=""
     >
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content bg-danger">
           <div class="modal-header d-flex justify-content-center">
             <h5 class="modal-title" id="exampleModalLabel">
               NEW COMMENT

@@ -1,6 +1,7 @@
 // import { AppState } from '../AppState'
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import Notification from '../utils/Notification'
 
 class TasksService {
   async getAllTasks(id) {
@@ -18,6 +19,7 @@ class TasksService {
     console.log(res.data)
     // better way because we donthave to make another call to the back end and will do it localy
     AppState.tasks[task.listId].push(res.data)
+    Notification.toast('Successfully Created Task', 'success')
   }
 
   async editTask(id, body) {
@@ -28,6 +30,7 @@ class TasksService {
   async deleteTask(prop) {
     await api.delete(`api/tasks/${prop.id}`)
     this.getAllTasks(prop.listId)
+    Notification.toast('Successfully Deleted Task', 'success')
   }
 
   async moveList(list, task) {

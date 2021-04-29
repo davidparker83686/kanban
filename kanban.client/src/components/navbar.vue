@@ -1,8 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-info rounded">
+  <nav class="navbar navbar-expand-lg dark-blue  rounded">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <span><b>KANBAN</b></span>
+      <div class="d-flex flex-column align-items-center" title="Take Me to Home Page">
+        <h1 class="lightest-green-text">
+          <b>KANBAN</b>
+        </h1>
       </div>
     </router-link>
     <button
@@ -25,14 +27,18 @@
         </li> -->
         <span></span>
         <li class="nav-item">
-          <router-link :to="{ name: 'Boards' }" class="nav-link">
-            <span><b>Boards</b></span>
+          <router-link :to="{ name: 'Boards' }" class="nav-link" title="Take Me To See My Boards">
+            <h2 class="lightest-green-text mb-0">
+              <!-- <b>| </b> -->
+              Boards
+            </h2>
           </router-link>
         </li>
       </ul>
       <span class="navbar-text">
         <button
           class="btn btn-outline-primary text-uppercase"
+          title="Account Details"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -51,7 +57,7 @@
               height="40"
               class="rounded-circle"
             />
-            <span class="mx-3 small">{{ user.name }}</span>
+            <span class="mx-3 lightest-green-text">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"

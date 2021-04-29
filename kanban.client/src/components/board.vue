@@ -1,20 +1,23 @@
 <template>
-  <div class="col-3 d-flex px-2 justify-content-center my-2">
-    <div class="card shadow " style="width: 18rem;cursor: pointer">
+  <div class="col-11 col-md-3 d-flex px-2 justify-content-center my-2">
+    <div class="card shadow " style="width: 18rem;">
       <div class="card-body">
-        <div class="d-flex justify-content-end">
-          <button class="btn text-danger" @click="deleteBoard(board.id)">
-            X
-          </button>
-        </div>
-        <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}">
-          <div class="d-flex justify-content-center">
-            <h3 class="card-title board">
-              {{ board.title }}
-            </h3>
-            <h5>{{ board.creatorid }}</h5>
+        <div class="row justify-content-between">
+          <div class="col-md-8">
+            <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}">
+              <h3 class="card-title board dark-blue-text" title="Board Name">
+                {{ board.title }}
+              </h3>
+            </router-link>
           </div>
-        </router-link>
+
+          <div class="col-md-2">
+            <button class="btn text-danger" title="Delete Board" aria-label="Delete Board" @click="deleteBoard(board.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+          <h5>{{ board.creatorid }}</h5>
+        </div>
       </div>
     </div>
   </div>
@@ -25,6 +28,7 @@ import { AppState } from '../AppState'
 import { boardsService } from '../services/BoardsService'
 // import { boardsService } from '../services/BoardsService'
 import { logger } from '../utils/Logger'
+import Notification from '../utils/Notification'
 
 export default {
   name: 'Board',
@@ -50,6 +54,7 @@ export default {
       async deleteBoard(id) {
         try {
           await boardsService.deleteBoard(id)
+          Notification.toast('Successfully Deleted Post', 'success')
         } catch (error) {
           logger.error(error)
         }
