@@ -125,10 +125,7 @@ export default {
 }
 </script>
 <style scoped>
-.task {
-  color: black !important;
-  text-decoration: none!important;
-}
+
 .drop:hover{
   color: white;
 }

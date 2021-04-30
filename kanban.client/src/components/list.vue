@@ -87,10 +87,7 @@ export default {
 }
 </script>
 <style scoped>
-.list {
-  color: black !important;
-  text-decoration: none!important;
-}
+
 .word-wrap{
   word-wrap: break-word;
 }

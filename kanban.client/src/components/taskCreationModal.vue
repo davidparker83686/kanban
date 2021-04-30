@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="modal "
+    <div class="modal dark-blue-over"
          :id="'task' + listId"
          tabindex="-1"
          role="dialog"
@@ -10,8 +10,8 @@
     >
       <div class="modal-dialog " role="document">
         <div class="modal-content bg-danger">
-          <div class="modal-header d-flex justify-content-center">
-            <h5 class="modal-title " id="exampleModalLabel">
+          <div class="modal-header border-bottom-0 d-flex justify-content-center">
+            <h5 class="modal-title text-light" id="exampleModalLabel">
               NEW TASK
             </h5>
           </div>
@@ -19,17 +19,17 @@
             <form class="form-group" @submit.prevent="createTask">
               <label for="name"></label>
               <input type="text"
-                     class="form-control"
+                     class="form-control "
                      id="name"
                      placeholder="task..."
                      v-model="state.newTask.title"
                      required
               >
               <div class="modal-footer d-flex justify-content-around ">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn hover-white btn-primary border-0 dark-blue-text">
                   Create
                 </button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
                   Close
                 </button>
               </div>

@@ -64,8 +64,5 @@ export default {
 }
 </script>
 <style scoped>
-.board {
-  color: black !important;
-  text-decoration: none!important;
-}
+
 </style>

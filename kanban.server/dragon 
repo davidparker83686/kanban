@@ -1,0 +1,54 @@
+you need to use
+draggable=true
+@dragstart
+
+class draggable makes so we can drag. ex in a VFOR after props draggable=true 
+
+
+moveItem() is how you move your dragable items
+event to knwo ehne @dragstart="moveItem"
+
+in your return in your moveItem() itemSerice.setItemToMove(props.itemData,props.roomId)
+
+
+itemSerice youhave to use a tempItem in your appstate.
+
+setItemToMove(item,oldRoomId){
+AppState.tempItem =item
+AppState.tempItem.oldRoomId=oldRoomId
+}
+
+
+dropzone='zone'@dragover.prevent @drop.prevent
+
+use comupted to watch the items in teh room and the room itself
+ 
+ to know here the item is going use props.roomdata.itemData
+
+ itemSerice.moveItem(state.setItemToMove, props.roomData.id)
+
+ in your service to reviece the item set up soemthing like this 
+ moveItem (item,newRoomId){
+   const itemMoving = Appstate.tempItem
+   const oldIndex= AppState.rooms.findIndex(r=> r.id === oldRoomid)
+   const newRoom= AppState.rooms.find(r=> r.id ===newRoomId)
+AppState.rooms[oldIndex].items = AppState.rooms[oldIndex].Items.filter(i => i.iod !== item Moving.id)
+
+ }
+
+
+ the parent must have the @dragstart="moveItem"
+
+
+  and the item getting dragged has to have @dragstart="moveItem" draggable=true 
+
+  dropzone must be in the area your trying to dropp items in 
+
+
+
+  reuse the same funntion but make sure your editing function is open to hold the two parms 
+
+
+  draggable
+  dropzone
+  

@@ -65,8 +65,5 @@ export default {
 }
 </script>
 <style scoped>
-.comment {
-  color: black !important;
-  text-decoration: none!important;
-}
+
 </style>
