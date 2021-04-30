@@ -6,7 +6,7 @@
     <router-view :key="$route.fullPath" />
   </main>
   <footer>
-    <div class="bg-none  text-center small">
+    <div class="bg-none super-light-green text-center small">
       KANBAN/2021
     </div>
   </footer>
