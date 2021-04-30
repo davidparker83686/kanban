@@ -4,7 +4,7 @@
       <div class="listsPage d-flex col-12 justify-content-between my-3 px-5" v-if="state.board">
         <h2>{{ (state.board.title).toUpperCase() }}</h2>
         <button type="button" title="Create List" class="btn btn-info lightest-green-text" data-toggle="modal" data-target="#list">
-          New List
+          NEW LIST
         </button>
       </div>
     </div>

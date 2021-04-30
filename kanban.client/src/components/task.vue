@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-11 d-flex px-3  my-2">
+    <div class="col-12 d-flex px-3  my-2">
       <div class="card dark-blue-text light-blue shadow " style="width: 18rem">
         <div class="card-body">
           <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->

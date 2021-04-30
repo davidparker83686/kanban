@@ -1,8 +1,13 @@
 <template>
   <div class="row justify-content-center my-2 align-items-center">
     <div class="col-8 p-0">
+      <!-- <span class="username"> {{ state.account.name.split('@')[0] }} </span> -->
+      <span class="username"> {{ (state.account.name.split('@')[0]).toUpperCase() }} </span>
+      <br>
       <span class="comment dark-blue-text">
-        {{ (comment.body).toUpperCase() }}
+        <!-- {{ (comment.body).toUpperCase() }} -->
+        {{ comment.body }}
+
         <!-- <h5>{{ comment.creatorid }}</h5> -->
       </span>
     </div>
@@ -42,7 +47,8 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      comments: computed(() => AppState.comments)
+      comments: computed(() => AppState.comments),
+      account: computed(() => AppState.account)
     })
     return {
       state,
@@ -65,5 +71,8 @@ export default {
 }
 </script>
 <style scoped>
+.username{
+  font-size: 20px !important;
+}
 
 </style>

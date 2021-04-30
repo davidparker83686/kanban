@@ -2,9 +2,9 @@
   <div class="container-fluid super-light-green">
     <div class="row justify-content-around">
       <div class="boardsPage d-flex col-12 justify-content-between px-5 my-3">
-        <h2>{{ state.account.name.split('@')[0] }}'s boards</h2>
+        <h2>{{ (state.account.name.split('@')[0]).toUpperCase() }}'S BOARDS</h2>
         <button type="button" class="btn btn-info lightest-green-text" data-toggle="modal" title="Create Board" data-target="#board">
-          New Board
+          NEW BOARD
         </button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 module.exports = {
- // NOTE to host on github publicPath: '/YOUR-GITHUB-REPOSITORY-NAME/',
+  // NOTE to host on github publicPath: '/YOUR-GITHUB-REPOSITORY-NAME/',
   publicPath: '/',
-  outputDir: 'docs',
+  outputDir: '../fullstack-kanban-auth.server/client',
   productionSourceMap: false
 }

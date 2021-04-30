@@ -6,7 +6,8 @@
           <div class="col-md-8">
             <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}">
               <h3 class="card-title board dark-blue-text" title="Board Name">
-                {{ board.title }}
+                {{ board.title.toUpperCase() }}
+                <!-- {{ (board.title).toUpperCase() }} -->
               </h3>
             </router-link>
           </div>
@@ -16,7 +17,7 @@
               <i class="fas fa-trash-alt"></i>
             </button>
           </div>
-          <h5>{{ board.creatorid }}</h5>
+          <!-- <h5>{{ board.creatorid }}</h5> -->
         </div>
       </div>
     </div>

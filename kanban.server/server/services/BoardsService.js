@@ -15,8 +15,8 @@ class BoardsService {
     return board
   }
 
-  async deleteBoard(id) {
-    const data = await dbContext.Board.findByIdAndDelete(id)
+  async deleteBoard(query = {}) {
+    const data = await dbContext.Board.findOneAndDelete(query)
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -27,7 +27,7 @@ class BoardsService {
     // what does this param say?
     const data = await dbContext.Board.findOneAndUpdate({ _id: body.id }, body, { new: true })
     if (!data) {
-      throw new BadRequest('Invalid Id')
+      throw new BadRequest('Invalid Board Id or Not The Creator')
     }
     return data
   }
