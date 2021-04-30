@@ -20,8 +20,6 @@
 
             <h5>{{ task.creatorid }}</h5>
           </div>
-
-        <!-- </router-link> -->
         </div>
         <div>
           <comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />

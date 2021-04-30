@@ -1,6 +1,6 @@
 <template>
   <div class="col-11 col-md-3  d-flex px-2 justify-content-center my-2">
-    <div class="card shadow " style="width: 18rem">
+    <div class="card shadow mb-5" style="width: 18rem">
       <div class="card-body">
         <!-- router link -->
         <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
