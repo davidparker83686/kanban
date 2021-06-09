@@ -12,12 +12,11 @@
             </router-link>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-3">
             <button class="btn text-danger" title="Delete Board" aria-label="Delete Board" @click="deleteBoard(board.id)">
               <i class="fas fa-trash-alt"></i>
             </button>
           </div>
-          <!-- <h5>{{ board.creatorid }}</h5> -->
         </div>
       </div>
     </div>

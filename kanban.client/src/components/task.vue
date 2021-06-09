@@ -6,13 +6,13 @@
           <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
 
           <div class="row justify-content-between">
-            <div class="col-md-8">
+            <div class="col-7 col-md-8">
               <h3 class="card-title task">
                 {{ (task.title).toUpperCase() }}
               </h3>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-2">
               <button class="btn text-danger" title="Delete Task" aria-label="Delete Task" @click="deleteTask()">
                 <i class="fas fa-trash-alt"></i>
               </button>
@@ -21,33 +21,41 @@
             <h5>{{ task.creatorid }}</h5>
           </div>
         </div>
-        <div>
+        <div class="scroll">
           <comment v-for="comment in state.comments" :key="comment.id" :comment="comment" />
         </div>
-        <button type="button"
-                class="btn btn-outline-info mt-1 mb-2 mx-2"
-                title="Create Comment"
-                @click="openModal"
-                data-toggle="modal"
-                :data-target="'#comment' + task.id"
-        >
-          Add A Comment
-        </button>
-        <div class="dropdown  d-flex justify-content-center mb-2">
-          <button class="btn drop btn-outline-success dropdown-togglen w-100 mt-1 mb-2 mx-2"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  title="Move Task"
-          >
-            Move Task
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="dropdown-item" href="#" v-for="list in state.list" :key="list.id" @click="changeList(list.id)">
-              {{ list.title }}
+
+        <div class="row">
+          <div class="col-6 ">
+            <div class="dropdown  d-flex justify-content-center mb-2 ">
+              <button class="btn drop btn-none text-success dropdown-togglen w-100 mt-1 mb-2 mx-2 big-icon"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      title="Move Task"
+              >
+                <i class="fas fa-exchange-alt"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-item" href="#" v-for="list in state.list" :key="list.id" @click="changeList(list.id)">
+                  {{ list.title }}
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="col-6 ">
+            <button type="button"
+                    class="btn btn-none text-info mt-1 mb-2 mx-2 big-icon"
+                    title="Create Comment"
+                    @click="openModal"
+                    data-toggle="modal"
+                    :data-target="'#comment' + task.id"
+            >
+              <i class="fas fa-comments"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -126,5 +134,19 @@ export default {
 
 .drop:hover{
   color: white;
+}
+.big-icon {
+    font-size: 32px;
+}
+.scroll{
+    overflow-y: scroll;
+    max-height: 13vw;
+}
+@media screen and (max-width:760px){
+  .scroll{
+    overflow-y: scroll;
+    /* overflow-x: hidden; */
+    max-height: 25vw;
+  }
 }
 </style>

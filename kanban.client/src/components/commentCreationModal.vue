@@ -26,11 +26,11 @@
                      required
               >
               <div class="modal-footer d-flex justify-content-around">
-                <button type="submit" class="btn hover-white btn-primary border-0 dark-blue-text">
-                  Create
-                </button>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">
                   Close
+                </button>
+                <button type="submit" class="btn hover-white btn-primary border-0 dark-blue-text">
+                  Create
                 </button>
               </div>
             </form>

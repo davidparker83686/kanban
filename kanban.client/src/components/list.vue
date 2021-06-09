@@ -1,17 +1,17 @@
 <template>
-  <div class="col-11 col-md-3  d-flex px-2 justify-content-center my-2">
+  <div class="col-12 col-md-3  d-flex px-2 justify-content-center my-2">
     <div class="card shadow mb-5" style="width: 18rem">
       <div class="card-body">
         <!-- router link -->
         <!-- <router-link :to="{name: 'BoardsDetails', params: {id: board.id}}"> -->
         <div class="row justify-content-between">
-          <div class="col-md-8">
+          <div class="col-7 col-md-8">
             <h3 class="card-title list word-wrap dark-blue-text">
               {{ (list.title ).toUpperCase() }}
             </h3>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-2">
             <button class="btn text-danger" title="Delete List" aria-label="Delete List" @click="deleteList(list.id)">
               <i class="fas fa-trash-alt"></i>
             </button>
